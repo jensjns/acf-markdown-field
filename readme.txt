@@ -1,6 +1,6 @@
 === Advanced Custom Fields: Markdown Field ===
 Contributors: jensnilsson
-Tags: Advanced Custom Fields, acf, acf5, custom fields, admin, wp-admin, markdown, syntax, syntax highlighting, md, mou
+Tags: Advanced Custom Fields, acf, acf4, acf5, custom fields, admin, wp-admin, markdown, syntax, syntax highlighting, md, mou
 Requires at least: 4.0
 Tested up to: 4.0
 Stable tag: trunk
@@ -17,10 +17,11 @@ Adds a markdown-field, which is really just a textarea with some extra tools and
 
 This ACF field type is compatible with:
 * ACF 5
+* ACF 4
 
 == Installation ==
 
-1. Copy the `advanced-custom-fields-markdown-field` folder into your `wp-content/plugins` folder
+1. Copy the `advanced-custom-fields-markdown` folder into your `wp-content/plugins` folder
 2. Activate the Markdown plugin via the plugins admin page
 3. Create a new field via ACF and select the Markdown type
 4. Please refer to the description for more info regarding the field type settings
@@ -31,10 +32,9 @@ If you want the latest development version of this plugin it is available over a
 
 == Screenshots ==
 
-1. Settings.
-2. Markdown editor.
-3. Preview mode.
-4. Fullscreen mode and syntax highlighting.
+1. Settings for the field.
+2. Markdown editor (Editor theme: Dark).
+3. Preview mode (Preview theme: GitHub, Syntax highlight theme: Monokai Sublime).
 
 == Changelog ==
 

@@ -1,6 +1,6 @@
 ACF Markdown Field
 ==================
-The latest stable release can be found [here](http://wordpress.org/extend/plugins/advanced-custom-fields-markdown-field/).
+The latest stable release can be found [here](http://wordpress.org/extend/plugins/advanced-custom-fields-markdown/).
 Description
 -----------
 Addon for [Advanced Custom Fields](http://www.advancedcustomfields.com/)  
@@ -12,6 +12,7 @@ Adds a markdown-field, which is really just a textarea with some extra tools and
 This ACF field type is compatible with:  
 
 * ACF 5
+* ACF 4
 
 ### Installation
 

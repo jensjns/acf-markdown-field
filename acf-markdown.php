@@ -35,12 +35,12 @@ add_action('acf/include_field_types', 'include_field_types_markdown');
 
 
 // 3. Include field type for ACF4
-/*function register_fields_markdown() {
+function register_fields_markdown() {
 
 	include_once('acf-markdown-v4.php');
 
 }
 
-add_action('acf/register_fields', 'register_fields_markdown');*/
+add_action('acf/register_fields', 'register_fields_markdown');
 
 ?>
