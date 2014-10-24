@@ -7,6 +7,7 @@
         var options = window[editorId];
         options.clientSideStorage = false;
         var editor = new EpicEditor(options).load();
+        var add_media_button = $el.find('.wp-media-buttons');
 
         if( options['syntaxHighlight'] ) {
             var previewer = editor.getElement('previewer');
@@ -16,6 +17,15 @@
                 $(previewer.body).find('pre code').each(function(i, block) {
                     hljs.highlightBlock(block, false);
                 });
+            });
+        }
+
+        if( add_media_button ) {
+            handle_media_button(add_media_button, $el.find('.wp-media-input'), function(props, attachment){
+                var container, txtToAdd;
+                container = $el.find("[data-acf-markdown-editor] iframe").contents().find("iframe#epiceditor-editor-frame").contents().find("body").get(0);
+                txtToAdd = "![" + attachment.alt + "](" + attachment.sizes[props.size].url + ")";
+                return insertAtCaret(container, txtToAdd);
             });
         }
 
@@ -31,6 +41,36 @@
             });
         }*/
 
+    }
+
+    function handle_media_button( $el, $inputEl, cb ) {
+        if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+            $el.on('click', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                wp.media.editor.send.attachment = cb;
+                wp.media.editor.open(button);
+                return false;
+            });
+        }
+    }
+
+    function insertAtCaret(element, text) {
+        var frag, node, nodeToInsert, range, selection, _window;
+        _window = element.ownerDocument.defaultView;
+        selection = _window.getSelection();
+
+        if (selection.rangeCount) {
+            range = selection.getRangeAt();
+            range.deleteContents();
+            node = document.createTextNode(text);
+            frag = document.createDocumentFragment();
+            nodeToInsert = frag.appendChild(node);
+            return range.insertNode(frag);
+        }
+        else {
+            return $(element).append(text);
+        }
     }
 
 

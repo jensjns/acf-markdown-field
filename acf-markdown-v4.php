@@ -29,7 +29,8 @@ class acf_field_markdown extends acf_field {
             'preview-theme' => 'github',
             'syntax-highlight' => '0',
             'syntax-theme' => 'monokai_sublime',
-            'tab-function' => '0'
+            'tab-function' => '0',
+            'media-upload' => '0'
         );
 
 
@@ -226,6 +227,28 @@ class acf_field_markdown extends acf_field {
         ?>
     </td>
 </tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+    <td class="label">
+        <label><?php _e("Show Media Upload Buttons?", 'acf-markdown'); ?></label>
+        <p class="description"></p>
+    </td>
+    <td>
+        <?php
+
+        do_action('acf/create_field', array(
+            'type'          => 'radio',
+            'name'          => 'fields['.$key.'][media-upload]',
+            'value'         =>  $field['media-upload'],
+            'layout'        => 'horizontal',
+            'choices'       => array(
+                '1'         => __('Yes','acf-markdown'),
+                '0'         => __('No','acf-markdown'),
+            )
+        ));
+
+        ?>
+    </td>
+</tr>
         <?php
 
     }
@@ -276,6 +299,12 @@ class acf_field_markdown extends acf_field {
 
         wp_enqueue_script( 'acf-input-markdown' );
     ?>
+        <?php if( $field['media-upload'] ) { ?>
+        <input type="hidden" name="wp-<?php echo $id; ?>-media-input" id="wp-<?php echo $id; ?>-media-input" class="wp-media-input" />
+        <div id="wp-<?php echo $id; ?>-media-button" class="wp-media-buttons">
+            <?php do_action( 'media_buttons' ); ?>
+        </div>
+        <?php } ?>
         <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $textareaId; ?>" value="<?php echo $field['value']; ?>" />
         <div id="<?php echo $id; ?>" data-acf-markdown-editor></div>
     <?php
@@ -304,6 +333,12 @@ class acf_field_markdown extends acf_field {
         wp_register_script( 'highlightjs', $this->settings['dir'] . 'js/lib/highlight/highlight.pack.js', array(), $this->settings['version'] );
 
         wp_enqueue_script( 'epiceditor' );
+
+        wp_enqueue_media();
+
+        // register & include CSS
+        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
+        wp_enqueue_style( 'acf-input-markdown' );
     }
 
 

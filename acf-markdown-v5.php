@@ -50,7 +50,8 @@ class acf_field_markdown extends acf_field {
             'preview-theme' => 'github',
             'syntax-highlight' => '0',
             'syntax-theme' => 'monokai_sublime',
-            'tab-function' => '0'
+            'tab-function' => '0',
+            'media-upload' => '0'
         );
 
 
@@ -220,6 +221,19 @@ class acf_field_markdown extends acf_field {
             )
         ));
 
+        // media-upload
+        acf_render_field_setting( $field, array(
+            'label'         => __('Show Media Upload Buttons?','acf-markdown'),
+            'instructions'  => '',
+            'type'          => 'radio',
+            'name'          => 'media-upload',
+            'layout'        => 'horizontal',
+            'choices'       => array(
+                1               =>  __("Yes",'acf'),
+                0               =>  __("No",'acf'),
+            )
+        ));
+
         /*acf_render_field_setting( $field, array(
             'label'         => __('Tab Key','acf-markdown'),
             'instructions'  => __('What does the tab-key to do when the editor is focused?', 'acf-markdown'),
@@ -292,9 +306,23 @@ class acf_field_markdown extends acf_field {
             //'tabFunction' => $field['tab-function']
         ));
 
+        if( $field['media-upload'] ) {
+            acf_hidden_input(array(
+                'type'  => 'hidden',
+                'name'  => 'wp-' . $id . '-media-input',
+                'id'    => 'wp-' . $id . '-media-input',
+                'class' => 'wp-media-input'
+            ));
+        }
+
         wp_enqueue_script( 'acf-input-markdown' );
     ?>
-        <div id="<?php echo $id; ?>" data-acf-markdown-editor></div>
+        <?php if( $field['media-upload'] ) { ?>
+        <div id="wp-<?php echo $id; ?>-media-button" class="wp-media-buttons">
+            <?php do_action( 'media_buttons' ); ?>
+        </div>
+        <?php } ?>
+        <div id="<?php echo $id; ?>" data-acf-markdown-editor class="acf-field-markdown-editor"></div>
     <?php
     }
 
@@ -325,9 +353,11 @@ class acf_field_markdown extends acf_field {
 
         wp_enqueue_script( 'epiceditor' );
 
+        wp_enqueue_media();
+
         // register & include CSS
-        /*wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
-        wp_enqueue_style('acf-input-markdown');*/
+        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
+        wp_enqueue_style( 'acf-input-markdown' );
     }
 
 
