@@ -38,6 +38,9 @@ If you want the latest development version of this plugin it is available over a
 
 == Changelog ==
 
+= 1.1.1 =
+* Fixed selector for add media button.
+
 = 1.1.0 =
 * Added support for "Add Media" button.
 
@@ -45,6 +48,9 @@ If you want the latest development version of this plugin it is available over a
 * Initial Release.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+* Fixed selector for add media button.
 
 = 1.1.0 =
 * Added support for "Add Media" button. (Available as an option)

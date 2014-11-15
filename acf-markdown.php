@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Markdown
 Plugin URI: https://github.com/jensjns/acf-markdown-field
 Description: Adds a markdown-field.
-Version: 1.1.0
+Version: 1.1.1
 Author: jensnilsson
 Author URI: http://jensnilsson.nu
 License: GPLv2 or later

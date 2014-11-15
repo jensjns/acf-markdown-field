@@ -21,7 +21,8 @@
         }
 
         if( add_media_button ) {
-            handle_media_button(add_media_button, $el.find('.wp-media-input'), function(props, attachment){
+            var button = add_media_button.find('.add_media');
+            handle_media_button(button, $el.find('.wp-media-input'), function(props, attachment){
                 var container, txtToAdd;
                 container = $el.find("[data-acf-markdown-editor] iframe").contents().find("iframe#epiceditor-editor-frame").contents().find("body").get(0);
                 txtToAdd = "![" + attachment.alt + "](" + attachment.sizes[props.size].url + ")";
