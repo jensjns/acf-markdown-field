@@ -337,6 +337,7 @@ class acf_field_markdown extends acf_field {
         wp_enqueue_media();
 
         // register & include CSS
+        $dir = plugin_dir_url( __FILE__ );
         wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
         wp_enqueue_style( 'acf-input-markdown' );
     }
