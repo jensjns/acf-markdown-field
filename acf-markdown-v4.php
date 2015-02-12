@@ -305,7 +305,7 @@ class acf_field_markdown extends acf_field {
             <?php do_action( 'media_buttons' ); ?>
         </div>
         <?php } ?>
-        <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $textareaId; ?>" value="<?php echo $field['value']; ?>" />
+        <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $textareaId; ?>" value="<?php echo htmlspecialchars($field['value']); ?>" />
         <div id="<?php echo $id; ?>" data-acf-markdown-editor></div>
     <?php
     }
