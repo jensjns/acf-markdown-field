@@ -16,6 +16,7 @@ Adds a markdown-field, which is really just a textarea with some extra tools and
 = Compatibility =
 
 This ACF field type is compatible with:
+
 * ACF 5
 * ACF 4
 
