@@ -348,7 +348,7 @@ class acf_field_markdown extends acf_field {
 
         // register & include JS
         wp_register_script( 'epiceditor', "{$dir}js/lib/EpicEditor-v0.2.2/js/epiceditor.min.js" );
-        wp_register_script( 'acf-input-markdown', "{$dir}js/input.js", array( 'epiceditor' ));
+        wp_register_script( 'acf-input-markdown', "{$dir}js/input.js", array( 'epiceditor' ), '1.1.2');
         wp_register_script( 'highlightjs', "{$dir}js/lib/highlight/highlight.pack.js" );
 
         wp_enqueue_script( 'epiceditor' );

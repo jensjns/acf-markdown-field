@@ -2,8 +2,38 @@
 
     function initialize_field( $el ) {
 
-        //$el.doStuff();
-        var editorId = $el.find('[data-acf-markdown-editor]').attr('id');
+        var handle_media_button = function( $el, $inputEl, cb ) {
+            if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+                $el.on('click', function(e) {
+                    e.preventDefault();
+                    var button = $(this);
+                    wp.media.editor.send.attachment = cb;
+                    wp.media.editor.open(button);
+                    return false;
+                });
+            }
+        };
+
+        var insertAtCaret = function(element, text) {
+            var frag, node, nodeToInsert, range, selection, _window;
+            _window = element.ownerDocument.defaultView;
+            selection = _window.getSelection();
+
+            if (selection.rangeCount) {
+                range = selection.getRangeAt(0);
+                range.deleteContents();
+                node = document.createTextNode(text);
+                frag = document.createDocumentFragment();
+                nodeToInsert = frag.appendChild(node);
+                return range.insertNode(frag);
+            }
+            else {
+                return $(element).append(text);
+            }
+        };
+
+        var editorDOM = $el.find('[data-acf-markdown-editor]');
+        var editorId = editorDOM.attr('id');
         var options = window[editorId];
         options.clientSideStorage = false;
         var editor = new EpicEditor(options).load();
@@ -30,50 +60,7 @@
             });
         }
 
-        /*if( parseInt(options.tabFunction) ) {
-            var spaces = parseInt(options.tabFunction);
-
-            $(editor.getElement('editor').body).on('keydown', function(e) {
-                // check if this is the tab-key
-                if( e.keyCode == 9 ) {
-                    e.preventDefault();
-                    //new Array(spaces+1).join(' ');
-                }
-            });
-        }*/
-
     }
-
-    function handle_media_button( $el, $inputEl, cb ) {
-        if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
-            $el.on('click', function(e) {
-                e.preventDefault();
-                var button = $(this);
-                wp.media.editor.send.attachment = cb;
-                wp.media.editor.open(button);
-                return false;
-            });
-        }
-    }
-
-    function insertAtCaret(element, text) {
-        var frag, node, nodeToInsert, range, selection, _window;
-        _window = element.ownerDocument.defaultView;
-        selection = _window.getSelection();
-
-        if (selection.rangeCount) {
-            range = selection.getRangeAt();
-            range.deleteContents();
-            node = document.createTextNode(text);
-            frag = document.createDocumentFragment();
-            nodeToInsert = frag.appendChild(node);
-            return range.insertNode(frag);
-        }
-        else {
-            return $(element).append(text);
-        }
-    }
-
 
     if( typeof acf.add_action !== 'undefined' ) {
 
