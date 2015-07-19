@@ -305,7 +305,7 @@ class acf_field_markdown extends acf_field {
             <?php do_action( 'media_buttons' ); ?>
         </div>
         <?php } ?>
-        <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $textareaId; ?>" value="<?php echo $field['value']; ?>" />
+        <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $textareaId; ?>" value="<?php echo htmlspecialchars($field['value']); ?>" />
         <div id="<?php echo $id; ?>" data-acf-markdown-editor></div>
     <?php
     }
@@ -337,6 +337,7 @@ class acf_field_markdown extends acf_field {
         wp_enqueue_media();
 
         // register & include CSS
+        $dir = plugin_dir_url( __FILE__ );
         wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
         wp_enqueue_style( 'acf-input-markdown' );
     }
