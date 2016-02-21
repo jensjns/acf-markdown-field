@@ -1,7 +1,6 @@
 (function($){
 
     function initialize_field( $el ) {
-
         var handle_media_button = function( $el, $inputEl, cb ) {
             if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
                 $el.on('click', function(e) {
@@ -36,6 +35,8 @@
         var editorId = editorDOM.attr('id');
         var options = window[editorId];
         options.clientSideStorage = false;
+        options.container = $el.find('#' + options.containerId)[0];
+        options.textarea = $el.find('#' + options.textareaId)[0];
         var editor = new EpicEditor(options).load();
         var add_media_button = $el.find('.wp-media-buttons');
 

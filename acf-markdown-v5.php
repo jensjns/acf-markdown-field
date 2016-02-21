@@ -292,8 +292,8 @@ class acf_field_markdown extends acf_field {
         ));
 
         wp_localize_script( 'acf-input-markdown',  $id, array(
-            'container' => $id,
-            'textarea' => $textareaId,
+            'containerId' => $id,
+            'textareaId' => $textareaId,
             'basePath' => "{$dir}js/lib/EpicEditor-v0.2.2",
             'autogrow' => ($field['autogrow'] == '1'),
             'theme' => array(
@@ -347,8 +347,8 @@ class acf_field_markdown extends acf_field {
 
 
         // register & include JS
-        wp_register_script( 'epiceditor', "{$dir}js/lib/EpicEditor-v0.2.2/js/epiceditor.min.js" );
-        wp_register_script( 'acf-input-markdown', "{$dir}js/input.js", array( 'epiceditor' ), '1.1.2');
+        wp_register_script( 'epiceditor', "{$dir}js/lib/EpicEditor-v0.2.2/js/epiceditor.js" );
+        wp_register_script( 'acf-input-markdown', "{$dir}js/input.js", array( 'epiceditor' ), '1.1.3');
         wp_register_script( 'highlightjs', "{$dir}js/lib/highlight/highlight.pack.js" );
 
         wp_enqueue_script( 'epiceditor' );
@@ -356,7 +356,7 @@ class acf_field_markdown extends acf_field {
         wp_enqueue_media();
 
         // register & include CSS
-        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
+        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css", array(), '1.1.3' );
         wp_enqueue_style( 'acf-input-markdown' );
     }
 

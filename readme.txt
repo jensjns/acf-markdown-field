@@ -39,6 +39,9 @@ If you want the latest development version of this plugin it is available over a
 
 == Changelog ==
 
+= 1.1.3 =
+* Fixed a bug that caused the js to initialize EpicEditor on the wrong element when appending a field using flexible content/repeater.
+
 = 1.1.2 =
 * Fixed a bug that caused the "Add Media" button to not work properly.
 
@@ -52,6 +55,9 @@ If you want the latest development version of this plugin it is available over a
 * Initial Release.
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+* Fixed a bug that caused the js to initialize EpicEditor on the wrong element when appending a field using flexible content/repeater.
 
 = 1.1.2 =
 * Fixed a bug that caused the "Add Media" button to not work properly.

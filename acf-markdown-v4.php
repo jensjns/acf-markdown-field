@@ -42,7 +42,7 @@ class acf_field_markdown extends acf_field {
         $this->settings = array(
             'path' => apply_filters('acf/helpers/get_path', __FILE__),
             'dir' => apply_filters('acf/helpers/get_dir', __FILE__),
-            'version' => '1.1.2'
+            'version' => '1.1.3'
         );
 
     }
@@ -283,8 +283,8 @@ class acf_field_markdown extends acf_field {
 
 
         wp_localize_script( 'acf-input-markdown',  $id, array(
-            'container' => $id,
-            'textarea' => $textareaId,
+            'containerId' => $id,
+            'textareaId' => $textareaId,
             'basePath' => $this->settings['dir'] . "js/lib/EpicEditor-v0.2.2",
             'autogrow' => ($field['autogrow'] == '1'),
             'theme' => array(
@@ -337,7 +337,7 @@ class acf_field_markdown extends acf_field {
         wp_enqueue_media();
 
         // register & include CSS
-        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css" );
+        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css", array(), $this->settings['version'] );
         wp_enqueue_style( 'acf-input-markdown' );
     }
 
