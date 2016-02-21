@@ -2,7 +2,7 @@
 Contributors: jensnilsson
 Tags: Advanced Custom Fields, acf, acf4, acf5, custom fields, admin, wp-admin, markdown, syntax, syntax highlighting, md, mou
 Requires at least: 4.0
-Tested up to: 4.0
+Tested up to: 4.4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ Adds a markdown-field.
 
 == Description ==
 
-Adds a markdown-field, which is really just a textarea with some extra tools and features that makes writing markdown more fun. Themes for the editor, the preview-mode and for syntax-highlighting is included and configurable in the field-group settings.
+Adds a markdown-field, which is really just a textarea with some extra tools and features that makes writing markdown more visually appealing. Themes for the editor, the preview-mode and for syntax-highlighting is included and configurable in the field-group settings.
 
 = Compatibility =
 
