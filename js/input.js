@@ -79,7 +79,7 @@
         *  @return  n/a
         */
 
-        acf.add_action('ready append', function( $el ){
+        acf.add_action('ready append show_field/type=markdown', function( $el ){
 
             // search $el for fields of type 'markdown'
             acf.get_fields({ type : 'markdown'}, $el).each(function(){
