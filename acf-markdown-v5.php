@@ -348,7 +348,7 @@ class acf_field_markdown extends acf_field {
 
         // register & include JS
         wp_register_script( 'epiceditor', "{$dir}js/lib/EpicEditor-v0.2.2/js/epiceditor.js" );
-        wp_register_script( 'acf-input-markdown', "{$dir}js/input.js", array( 'epiceditor' ), '1.1.3');
+        wp_register_script( 'acf-input-markdown', "{$dir}js/input.js", array( 'epiceditor' ), '1.1.4');
         wp_register_script( 'highlightjs', "{$dir}js/lib/highlight/highlight.pack.js" );
 
         wp_enqueue_script( 'epiceditor' );
@@ -356,7 +356,7 @@ class acf_field_markdown extends acf_field {
         wp_enqueue_media();
 
         // register & include CSS
-        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css", array(), '1.1.3' );
+        wp_register_style( 'acf-input-markdown', "{$dir}css/input.css", array(), '1.1.4' );
         wp_enqueue_style( 'acf-input-markdown' );
     }
 
